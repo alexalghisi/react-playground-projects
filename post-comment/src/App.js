@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 
-const initialList = Object.freeze([
+import List, { AddItem } from "./list";
+
+const initialDemoList = Object.freeze([
   {
     id: "a",
     name: "Robin",
@@ -12,32 +14,8 @@ const initialList = Object.freeze([
   },
 ]);
 
-const AddItem = ({ onChange, name, onAdd, handleKeyDown }) => (
-  <div>
-    <div>
-      <input
-        type="text"
-        value={name}
-        onChange={onChange}
-        onKeyDown={handleKeyDown}
-      />
-      <button type="button" onClick={onAdd}>
-        Add
-      </button>
-    </div>
-  </div>
-);
-
-const List = ({ list }) => (
-  <form>
-    {list.map((item) => (
-      <li key={item.id}>{item.name}</li>
-    ))}
-  </form>
-);
-
 const App = () => {
-  const [list, setList] = useState(initialList);
+  const [list, setList] = useState(initialDemoList);
   const [name, setName] = useState("");
 
   const handleChange = (event) => {
